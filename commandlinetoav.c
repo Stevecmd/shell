@@ -38,7 +38,7 @@ char **split_string(const char *str, int *num_words) {
 }
 
 int main() {
-    const char *str = "This is a test string";
+    char str[] = "This is a test string";
     int num_words;
     char **words = split_string(str, &num_words);
 
