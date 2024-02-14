@@ -184,3 +184,52 @@ Write a program that executes the command `ls -l /tmp` in 5 different child proc
 Each child should be created by the same process (the father). <br />
 Wait for a child to exit before creating a new child. 
 
+Compile the code:
+```sh
+gcc -Wall -Wextra -Werror -pedantic forkwaitexecve.c -o forkwaitexecve
+```
+Run the program:
+```sh
+./forkwaitexecve
+```
+Sample output:
+```sh
+shell# ./forkwaitexecve
+Child process 1: PID 220
+total 0
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.DAOEzJT0J6
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.dOKjikw0Ig
+drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
+Child process 2: PID 221
+total 0
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.DAOEzJT0J6
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.dOKjikw0Ig
+drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
+Child process 3: PID 222
+total 0
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.DAOEzJT0J6
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.dOKjikw0Ig
+drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
+Child process 4: PID 223
+total 0
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.DAOEzJT0J6
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.dOKjikw0Ig
+drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
+Child process 5: PID 224
+total 0
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.DAOEzJT0J6
+drwx------ 2 mysql mysql  6 Mar 30  2022 tmp.dOKjikw0Ig
+drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
+```
+## Exercise: super simple shell
+```sh
+gcc -Wall -Wextra -Werror -pedantic supersimpleshell.c -o supersimpleshell
+```
+Run the program:
+```sh
+./supersimpleshell
+```
+Sample output:
+```sh
+
+```
