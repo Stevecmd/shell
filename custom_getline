@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+ssize_t custom_getline(char **lineptr, size_t *n, FILE *stream) {
+    if (*lineptr == NULL || *n == 0) {
+
+        *lineptr = malloc(128);
+        if (*lineptr == NULL) {
+            return -1;
+        }
+        *n = 128;
+    }
+
+    size_t pos = 0;
+    int c;
+
+    while ((c = fgetc(stream)) != EOF) {
+        if (pos >= *n - 1) {
+            size_t new_size = *n * 2;
+            char *new_ptr = realloc(*lineptr, new_size);
+            if (new_ptr == NULL) {
+                return -1;
+            }
+            *lineptr = new_ptr;
+            *n = new_size;
+        }
+
+        (*lineptr)[pos++] = c;
+
+        if (c == '\n') {
+            break;
+        }
+    }
+
+    (*lineptr)[pos] = '\0';
+
+    return pos;
+}
+
+int main() {
+    char *line = NULL;
+    size_t len = 0;
+
+    printf("$ ");
+    ssize_t read;
+
+    while ((read = custom_getline(&line, &len, stdin)) != -1) {
+        printf("%s", line);
+        printf("$ ");
+    }
+
+    if (line != NULL) {
+        free(line);
+    }
+
+    return 0;
+}
