@@ -223,11 +223,11 @@ drwx------ 2 root  root  22 Mar 30  2022 tmpztrs6ymg
 ```
 ## Exercise: super simple shell
 ```sh
-gcc -Wall -Wextra -Werror -pedantic supersimpleshell.c -o supersimpleshell
+gcc -Wall -Wextra -Werror -pedantic firstsimpleshell.c -o firstsimpleshell
 ```
 Run the program:
 ```sh
-./supersimpleshell
+./firstsimpleshell
 ```
 Sample output:
 ```sh

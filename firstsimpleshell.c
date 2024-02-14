@@ -24,15 +24,21 @@ int main(void) {
             perror("fork");
             exit(EXIT_FAILURE);
         } else if (pid == 0) {
-            char *args[2];
-            args[0] = input;
-            args[1] = NULL;
-
-            if (execve(args[0], args, NULL) == -1) {
-                perror("execve");
-                exit(EXIT_FAILURE);
+            char *args[MAX_COMMAND_LENGTH];
+            char *token = strtok(input, " ");
+            int i = 0;
+            while (token != NULL && i < MAX_COMMAND_LENGTH - 1) {
+                args[i++] = token;
+                token = strtok(NULL, " ");
             }
+            args[i] = NULL;
+
+            execvp(args[0], args);
+            
+            perror("execvp");
+            exit(EXIT_FAILURE);
         } else {
+
             int status;
             wait(&status);
         }
