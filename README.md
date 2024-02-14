@@ -231,5 +231,8 @@ Run the program:
 ```
 Sample output:
 ```sh
-
+shell# ./firstsimpleshell
+#cisfun$ ls
+av                 custom_getline  exec.c              fork     fork.c            getppid  pid.c      prompt     stat.c
+commandlinetoav    env-main.c      firstsimpleshell    fork2    forkwaitexecve    main.h   pid_max    prompt.c   wait
 ```
