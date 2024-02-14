@@ -70,7 +70,14 @@ Run the program:
 ```
 Sample output:
 ```sh
-
+shell# ./commandlinetoav
+Number of words: 5
+Words:
+This
+is
+a
+test
+string
 ```
 
 
@@ -110,8 +117,8 @@ drwxr-xr-x 2 root root     6 Apr 15  2020 src
 
 ## Creating processes
 
-The system call fork (man 2 fork) creates a new child process, almost identical to the parent (the process <br />
-that calls fork). Once fork successfully returns, two processes continue to run the same program, but with <br />
+The system call `fork` (man 2 `fork`) creates a new child process, almost identical to the parent (the process <br />
+that calls `fork`). Once `fork` successfully returns, two processes continue to run the same program, but with <br />
 different stacks, datas and heaps. <br />
 see `fork.c`.
 
@@ -130,6 +137,27 @@ After fork
 My pid is 120
 After fork
 My pid is 121
+```
+Similarly, Using the return value of fork, it is possible to know if <br />
+the current process is the father or the child: fork will return 0 to the child, <br />
+and the PID of the child to the father. <br />
+See: `fork2.c`
+
+Compile the code:
+```sh
+gcc -Wall -Wextra -Werror -pedantic fork2.c -o fork2
+```
+Run the program:
+```sh
+./fork2
+```
+Sample output:
+```sh
+shell# ./fork2
+My pid is 192
+(192) 193, I am your father
+My pid is 193
+(193) Nooooooooo!
 ```
 
 ## Wait
@@ -150,3 +178,9 @@ Sample output:
 Wait for me, wait for me
 Oh, it's all better now
 ```
+
+## Exercise: fork + wait + execve
+Write a program that executes the command `ls -l /tmp` in 5 different child processes. <br /> 
+Each child should be created by the same process (the father). <br />
+Wait for a child to exit before creating a new child. 
+
